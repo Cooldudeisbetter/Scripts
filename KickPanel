@@ -1,4 +1,4 @@
-local plr = game:GetService("Players"):WaitForChild("LocalPlayer")
+local plr = game.Players.LocalPlayer
 local remote = Instance.new("RemoteEvent")
 remote.Parent = game.ReplicatedStorage
 remote.Name = "COOLDUDESKICKGUIPANELREMOTE"
@@ -143,3 +143,5 @@ remote.OnServerEvent:Connect(function(plr)
     "Kicked by"..plr.DisplayName
     )
 end)
+
+screenGui.Parent = plr.PlayerGui
