@@ -1,0 +1,145 @@
+local plr = game:GetService("Players"):WaitForChild("LocalPlayer")
+local remote = Instance.new("RemoteEvent")
+remote.Parent = game.ReplicatedStorage
+remote.Name = "COOLDUDESKICKGUIPANELREMOTE"
+
+
+local function makeDraggable(frame)
+    local dragToggle = false
+    local dragStart = nil
+    local startPos = nil
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragToggle = true
+            dragStart = input.Position
+            startPos = frame.Position
+        end
+    end)
+
+    frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement and dragToggle then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+
+    frame.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragToggle = false
+        end
+    end)
+end
+
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = plr:WaitForChild("PlayerGui")
+screenGui.Name = "KickPanelGUI"
+
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0.3, 0, 0.2, 0) 
+mainFrame.Position = UDim2.new(0.35, 0, 0.4, 0) 
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.Parent = screenGui
+
+
+makeDraggable(mainFrame)
+
+local uiGradient = Instance.new("UIGradient")
+uiGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)),
+    ColorSequenceKeypoint.new(1, Color3.new(1, 0, 1))
+}
+uiGradient.Parent = mainFrame
+
+local title = Instance.new("TextLabel")
+title.Parent = mainFrame
+title.Size = UDim2.new(1, 0, 0.2, 0)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.new(1, 0, 1)
+title.Text = "Kick Panel"
+title.TextScaled = true
+title.Font = Enum.Font.FredokaOne
+
+
+local closeButton = Instance.new("TextButton")
+closeButton.Parent = mainFrame
+closeButton.Size = UDim2.new(0.15, 0, 0.2, 0)
+closeButton.Position = UDim2.new(0.85, 0, 0, 0)
+closeButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+closeButton.Text = "X"
+closeButton.TextScaled = true
+closeButton.Font = Enum.Font.FredokaOne
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
+
+local scrollingFrame = Instance.new("ScrollingFrame")
+scrollingFrame.Size = UDim2.new(1, 0, 0.8, 0)
+scrollingFrame.Position = UDim2.new(0, 0, 0.2, 0)
+scrollingFrame.BackgroundTransparency = 0.2
+scrollingFrame.BackgroundColor3 = Color3.new(0.9, 0.9, 0.9)
+scrollingFrame.BorderSizePixel = 0
+scrollingFrame.ScrollBarThickness = 8
+scrollingFrame.ScrollingEnabled = false 
+scrollingFrame.Parent = mainFrame
+
+local listLayout = Instance.new("UIListLayout")
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.Padding = UDim.new(0.02, 0)
+listLayout.Parent = scrollingFrame
+
+local KickBtn = Instance.new("TextButton")
+KickBtn.Parent = scrollingFrame
+KickBtn.BackgroundColor3 = Color3.new(1,0,1)
+KickBtn.Text = "Kick User"
+
+local plr2 = Instance.new("TextBox")
+plr2.BackgroundTransparency = 1
+plr2.PlaceholderText = "Enter the player's username"
+plr2.PlaceholderColor3 = Color3.new(1,0,1)
+plr2.Parent = scrollingFrame
+local corner = Instance.new("UICorner")
+corner.Parent = KickBtn
+corner.CornerRadius = UDim.new(0.1,0)
+local corner2 = corner:Clone()
+corner2.Parent = mainFrame
+
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y)
+
+KickBtn.Activated:Connect(function()
+    local playerName = plr2.Text 
+    local playerToKick = game.Players:FindFirstChild(playerName) 
+
+    if playerToKick then
+        remote:FireServer(plr,playerToKick)
+
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Player Not Found",
+            Text = "The player '" .. playerName .. "' could not be found.",
+            Duration = 5
+        })
+    end
+end)
+
+
+listLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+    scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y)
+end)
+
+remote.OnServerEvent:Connect(function(plr)
+    plr:Kick(
+    "Kicked by"..plr.DisplayName
+    )
+end)
