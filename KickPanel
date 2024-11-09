@@ -93,23 +93,27 @@ local listLayout = Instance.new("UIListLayout")
 listLayout.SortOrder = Enum.SortOrder.LayoutOrder
 listLayout.Padding = UDim.new(0.02, 0)
 listLayout.Parent = scrollingFrame
-
 local KickBtn = Instance.new("TextButton")
 KickBtn.Parent = scrollingFrame
 KickBtn.BackgroundColor3 = Color3.new(1, 0, 1)
 KickBtn.Text = "Kick User"
-KickBtn.Font = Enum.Font.FredokaOne 
+KickBtn.Font = Enum.Font.FredokaOne
+KickBtn.TextColor3 = Color3.new(1, 1, 1)  
+KickBtn.TextScaled = true  
+KickBtn.Size = UDim2.new(1, 0, 0, 40)  
 
 local plr2 = Instance.new("TextBox")
 plr2.BackgroundTransparency = 1
 plr2.PlaceholderText = "Enter the player's username"
 plr2.PlaceholderColor3 = Color3.new(1, 0, 1)
 plr2.Font = Enum.Font.FredokaOne
+plr2.TextColor3 = Color3.new(1, 1, 1)  
 plr2.Parent = scrollingFrame
 
 local corner = Instance.new("UICorner")
 corner.Parent = KickBtn
-corner.CornerRadius = UDim.new(0.1, 0)
+corner.CornerRadius = UDim.new(0.1, 0)  
+
 local corner2 = corner:Clone()
 corner2.Parent = mainFrame
 
@@ -121,13 +125,11 @@ KickBtn.Activated:Connect(function()
 
     if playerToKick then
         playerToKick:Kick("Kicked by " .. plr.DisplayName)
-        if game.Players:FindFirstChild(plr2) then
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Success kicked"..playerName,
-                Text = "The player '" .. playerName .. "' could not be found.",
-                Duration = 5
-            })
-        end
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Success",
+            Text = "The player '" .. playerName .. "' has been kicked.",
+            Duration = 5
+        })
     else
         game:GetService("StarterGui"):SetCore("SendNotification", {
             Title = "Player Not Found",
@@ -140,6 +142,3 @@ end)
 listLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
     scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y)
 end)
-
-
-screenGui.Parent = plr.PlayerGui
