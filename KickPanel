@@ -99,7 +99,6 @@ KickBtn.Parent = scrollingFrame
 KickBtn.BackgroundColor3 = Color3.new(1, 0, 1)
 KickBtn.Text = "Kick User"
 KickBtn.Font = Enum.Font.FredokaOne 
-KickBtn.TextScaled = true
 
 local plr2 = Instance.new("TextBox")
 plr2.BackgroundTransparency = 1
@@ -107,7 +106,6 @@ plr2.PlaceholderText = "Enter the player's username"
 plr2.PlaceholderColor3 = Color3.new(1, 0, 1)
 plr2.Font = Enum.Font.FredokaOne
 plr2.Parent = scrollingFrame
-plr2.TextScaled = true
 
 local corner = Instance.new("UICorner")
 corner.Parent = KickBtn
@@ -122,7 +120,14 @@ KickBtn.Activated:Connect(function()
     local playerToKick = game.Players:FindFirstChild(playerName)
 
     if playerToKick then
-        remote:FireServer(plr, playerToKick)
+        playerToKick:Kick("Kicked by " .. plr.DisplayName)
+        if game.Players:FindFirstChild(plr2) then
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Success kicked"..playerName,
+                Text = "The player '" .. playerName .. "' could not be found.",
+                Duration = 5
+            })
+        end
     else
         game:GetService("StarterGui"):SetCore("SendNotification", {
             Title = "Player Not Found",
@@ -136,8 +141,5 @@ listLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
     scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y)
 end)
 
-remote.OnServerEvent:Connect(function(plr)
-    plr:Kick("Kicked by " .. plr.DisplayName)
-end)
 
 screenGui.Parent = plr.PlayerGui
