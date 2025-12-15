@@ -9,6 +9,10 @@ local scripttab = Window:MakeTab({
 	Icon = "rbxassetid://129118857922530"
 })
 
+local settingstab = Window:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://6918434507"
+})
 
 local function notif(name,ctx,time,img)
 	OrionLib:MakeNotification({
@@ -53,5 +57,17 @@ scripttab:AddButton({
 
 	end
 })
+
+settingstab:AddButton({
+	Name = "Destroy Hub",
+	Callback = function()
+		OrionLib:Destroy()
+	end
+})
+
+
+
+
+
 
 OrionLib:Init()
