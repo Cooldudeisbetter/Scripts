@@ -5,8 +5,8 @@ local lib = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releas
 WindUI:AddTheme({
     Name = "Aqua Theme",
     
-    Accent = Color3.fromHex("#1900ff"),
-    Background = Color3.fromHex("#101010"), 
+    Accent = Color3.fromHex("#101010"),
+    Background = Color3.fromHex("#1900ff"), 
     Outline = Color3.fromHex("#FFFFFF"),
     Text = Color3.fromHex("#FFFFFF"),
     Placeholder = Color3.fromHex("#7a7a7a"),
