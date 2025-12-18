@@ -6,7 +6,7 @@ WindUI:AddTheme({
     Name = "Aqua Theme",
     
     Accent = Color3.fromHex("#1900ff"),
-    Background = Color3.fromHex("#101010"), -- Accent
+    Background = Color3.fromHex("#101010"), 
     Outline = Color3.fromHex("#FFFFFF"),
     Text = Color3.fromHex("#FFFFFF"),
     Placeholder = Color3.fromHex("#7a7a7a"),
