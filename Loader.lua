@@ -1,6 +1,6 @@
 local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
-local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
+local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
 
 WindUI:AddTheme({
     Name = "Aqua Theme",
@@ -16,7 +16,7 @@ WindUI:AddTheme({
 
 WindUI:SetTheme("Aqua Theme")
 
-local Window = lib:CreateWindow({
+local Window = WindUI:CreateWindow({
     Theme = "Aqua Theme",
     Title = "Aqua Hub - Custom",
     Icon = "Shell",
