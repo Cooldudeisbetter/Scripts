@@ -40,14 +40,14 @@ Window:Tag({
     Title = "v1.0.0 APLHA",
     Icon = "rocket",
     Color = Color3.fromHex("#e3102c"),
-    Radius = 3,
+    Radius = 10,
 })
 
 Window:Tag({
     Title = "Custom",
     Icon = "zap",
     Color = Color3.fromHex("#9d00ff"),
-    Radius = 5,
+    Radius = 10,
 })
 
 home:Select()
