@@ -3,10 +3,10 @@ local plr = Players.LocalPlayer
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
 WindUI:AddTheme({
-    Name = "Aqua Theme",
+    Name = "Lunar Theme",
     
     Accent = Color3.fromHex("#101010"),
-    Background = Color3.fromHex("#3828c7"), 
+    Background = Color3.fromHex("#5e00b0"), 
     Outline = Color3.fromHex("#FFFFFF"),
     Text = Color3.fromHex("#FFFFFF"),
     Placeholder = Color3.fromHex("#7a7a7a"),
@@ -15,11 +15,11 @@ WindUI:AddTheme({
 })
 
 local Window = WindUI:CreateWindow({
-    Theme = "Aqua Theme",
-    Title = "Aqua Hub - Custom",
-    Icon = "lucide:shell",
+    Theme = "Lunar Theme",
+    Title = "Lunar Hub",
+    Icon = "lucide:moon",
     Author = "by cooldudeisbetter",
-    Folder = "Aqua Hub",
+    Folder = "Lunar Hub",
 
     User = {
         Enabled = true,
@@ -64,11 +64,11 @@ Window:Tag({
 Window:Tag({
     Title = "Custom",
     Icon = "zap",
-    Color = Color3.fromHex("#9d00ff"),
+    Color = Color3.fromHex("#002fff"),
     Radius = 10,
 })
 
 home:Select()
 
-Notify("Aqua Hub","Aqua hub has been loaded | Have a goody day","refresh-ccw",5)
+Notify("Lunar Hub","Lunar hub has been loaded | Have a good day","refresh-ccw",5)
 
