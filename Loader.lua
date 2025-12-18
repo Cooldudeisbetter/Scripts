@@ -31,12 +31,12 @@ local Window = WindUI:CreateWindow({
 })
 
 local function Notify(title,content,Icon,Duration)
-    if time,content,Icon,Duration then 
+    if title and content then 
         WindUI:Notify({
             Title = title,
             Content = content,
-            Icon = Icon,
-            Duration = Duration,
+            Icon = Icon or nil,
+            Duration = Duration or 5,
         })
     else
         WindUI:Notify({
