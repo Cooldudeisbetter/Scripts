@@ -39,8 +39,8 @@ local home = Window:Tab({
 Window:Tag({
     Title = "v1.0.0 APLHA",
     Icon = "rocket",
-    Color = Color3.fromHex("#04ff00"),
-    Radius = 5
+    Color = Color3.fromHex("#e3102c"),
+    Radius = 3,
 })
 
 Window:Tag({
