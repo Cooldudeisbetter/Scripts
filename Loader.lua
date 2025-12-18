@@ -45,6 +45,7 @@ local function Notify(title,content,Icon,Duration)
             Icon = "shield-alert",
             Duration = 10
         })
+    end
 end
 
 local home = Window:Tab({
