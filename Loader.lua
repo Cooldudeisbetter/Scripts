@@ -36,4 +36,18 @@ local home = Window:Tab({
     Locked = false,
 })
 
+Window:Tag({
+    Title = "v1.0.0 APLHA",
+    Icon = "rocket",
+    Color = Color3.fromHex("#04ff00"),
+    Radius = 5
+})
+
+Window:Tag({
+    Title = "Custom",
+    Icon = "zap",
+    Color = Color3.fromHex("#9d00ff"),
+    Radius = 5,
+})
+
 home:Select()
