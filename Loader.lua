@@ -14,8 +14,6 @@ WindUI:AddTheme({
     Icon = Color3.fromHex("#a1a1aa"),
 })
 
-WindUI:SetTheme("Aqua Theme")
-
 local Window = WindUI:CreateWindow({
     Theme = "Aqua Theme",
     Title = "Aqua Hub - Custom",
