@@ -101,3 +101,18 @@ scripts:Button({
         Notify("Lunar Hub","Voidware has been loaded","check",5)
     end
 })
+
+chat = Window:Tab({
+    Title = "Chat Bypassers",
+    Icon = "message-square-text",
+})
+
+chat:Button({
+    Title = "Betterbypasser",
+    Desc = "Best chat bypasser by synergy",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Synergy-Networks/products/main/BetterBypasser/loader.lua"))()
+        Notify("Lunar hub","Betterbypassee has been loaded","check",5)
+    end
+})
