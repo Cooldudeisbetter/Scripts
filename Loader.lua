@@ -113,6 +113,6 @@ chat:Button({
     Locked = false,
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Synergy-Networks/products/main/BetterBypasser/loader.lua"))()
-        Notify("Lunar hub","Betterbypassee has been loaded","check",5)
+        Notify("Lunar hub","Betterbypasser has been loaded","check",5)
     end
 })
