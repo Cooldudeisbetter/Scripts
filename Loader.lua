@@ -72,3 +72,22 @@ home:Select()
 
 Notify("Lunar Hub","Lunar hub has been loaded | Have a good day","refresh-ccw",5)
 
+home:Code({
+    Title = "Script Copy",
+    Code = [[loadstring(game:HttpGet("https://raw.githubusercontent.com/Cooldudeisbetter/Scripts/refs/heads/main/Loader.lua"))()]]
+})
+
+scripts = Window:Tab({
+    Title = "Scripts",
+    Icon = "scroll-text",
+})
+
+scripts:Button({
+    Title = "Solara Hub v4",
+    Desc = "Solara hub is one of the best script hubs out there",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()
+        Notify("Lunar Hub","Solara Hub has been loaded","check",5)
+    end
+})
