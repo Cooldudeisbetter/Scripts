@@ -6,7 +6,7 @@ local Window = lib:CreateWindow({
     Title = "Aqua Hub - Custom",
     Icon = "Shell",
     Author = "by cooldudeisbetter",
-    Folder = "Aqua Hub"
+    Folder = "Aqua Hub",
 
     User = {
         Enabled = true,
