@@ -91,3 +91,13 @@ scripts:Button({
         Notify("Lunar Hub","Solara Hub has been loaded","check",5)
     end
 })
+
+scripts:Button({
+    Title = "VoidWare Loader",
+    Desc = "Best script ever",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/loader.lua", true))()
+        Notify("Lunar Hub","Voidware has been loaded","check",5)
+    end
+})
