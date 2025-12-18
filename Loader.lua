@@ -30,6 +30,23 @@ local Window = WindUI:CreateWindow({
     }
 })
 
+local function Notify(title,content,Icon,Duration)
+    if time,content,Icon,Duration then 
+        WindUI:Notify({
+            Title = title,
+            Content = content,
+            Icon = Icon,
+            Duration = Duration,
+        })
+    else
+        WindUI:Notify({
+            Title = "ERROR",
+            Content = "Invalid variables",
+            Icon = "shield-alert",
+            Duration = 10
+        })
+end
+
 local home = Window:Tab({
     Title = "Home",
     Icon = "house",
@@ -51,3 +68,6 @@ Window:Tag({
 })
 
 home:Select()
+
+Notify("Aqua Hub","Aqua hub has been loaded | Have a goody day","refresh-ccw",5)
+
