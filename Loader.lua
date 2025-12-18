@@ -31,7 +31,7 @@ local Window = WindUI:CreateWindow({
 })
 
 local home = Window:Tab({
-    Name = "Home",
+    Title = "Home",
     Icon = "house",
     Locked = false,
 })
