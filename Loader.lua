@@ -17,7 +17,7 @@ WindUI:AddTheme({
 local Window = WindUI:CreateWindow({
     Theme = "Aqua Theme",
     Title = "Aqua Hub - Custom",
-    Icon = "shell",
+    Icon = "lucide:shell",
     Author = "by cooldudeisbetter",
     Folder = "Aqua Hub",
 
