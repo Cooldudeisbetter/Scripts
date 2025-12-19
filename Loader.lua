@@ -116,3 +116,31 @@ chat:Button({
         Notify("Lunar hub","Betterbypasser has been loaded","check",5)
     end
 })
+
+acb = Window:Tab({
+    Title = "Anticheat Bypasser",
+    Icon = "shield-off",
+})
+
+acb:Button({
+    Title = "Anti Kick",
+    Desc = "Activates anti kick",
+    Locked = false,
+    Callback = function()
+        Notify("Lunar Hub","Running anti kick","check",5)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
+    end
+})
+
+acb:dividor()
+
+acb:Button({
+    Title = "Bypass adonis anti-cheat",
+    Desc = "Bypasses adonis anti-cheat",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
+    end
+
+})
