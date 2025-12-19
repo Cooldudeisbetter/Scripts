@@ -1,7 +1,9 @@
 while true do
+    f = math.random(8000,10000)
+
     local args = {
         [1] = {
-            ["fps"] = 8363409,
+            ["fps"] = f,
             ["mem"] = 13158.694580078125,
             ["t"] = "metrics",
             ["res"] = Vector2.new(1180, 820),
