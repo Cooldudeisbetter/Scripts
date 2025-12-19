@@ -8,8 +8,7 @@ while true do
             ["mem"] = m,
             ["t"] = "metrics",
             ["res"] = Vector2.new(1180, 820),
-            ["gfx"] = Enum.SavedQualitySetting.Automatic
-        }
+            ["gfx"] = enum.SavedQualitySetting.Ten,
         
     }
 
