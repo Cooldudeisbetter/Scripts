@@ -12,6 +12,6 @@ while true do
 
     game:GetService("ReplicatedStorage"):WaitForChild("nya"):FireServer(unpack(args))
 
-    task.sleep(0.5)
+    task.wait(0.5)
 
 end
