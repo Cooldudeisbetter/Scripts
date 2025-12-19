@@ -132,7 +132,7 @@ acb:Button({
     end
 })
 
-acb:dividor()
+acb:Divider()
 
 acb:Button({
     Title = "Bypass adonis anti-cheat",
