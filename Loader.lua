@@ -20,14 +20,6 @@ local Window = WindUI:CreateWindow({
     Icon = "lucide:moon",
     Author = "by cooldudeisbetter",
     Folder = "Lunar Hub",
-
-    User = {
-        Enabled = true,
-        Anonymous = false,
-        Callback = function()
-            print("Not a clickable object")
-        end,
-    }
 })
 
 local function Notify(title,content,Icon,Duration)
