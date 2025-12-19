@@ -1,5 +1,5 @@
 while true do
-    f = math.random(100,240)
+    f = math.random(100,1200)
     m = math.random(1500,3000)
 
     local args = {
