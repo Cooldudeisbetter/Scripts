@@ -1,22 +1,14 @@
-while true do
-    f = math.random(235,1200)
-    m = math.random(1500,3000)
-
+local function send(res,mem,fps)
     local args = {
         [1] = {
-            ["fps"] = f,
-            ["mem"] = m,
+            ["res"] = res --[[Vector2]],
+            ["mem"] = mem,
             ["t"] = "metrics",
-            ["res"] = Vector2.new(1180, 820),
-            ["gfx"] = Enum.QualitySetting.Ten,
-        
+            ["gfx"] = Enum.SavedQualitySetting.Automatic,
+            ["fps"] = 59.84706857657344
+        }
     }
-}
 
-
-    game:GetService("ReplicatedStorage"):WaitForChild("nya"):FireServer(unpack(args))
-    print(args[1]["t"])
-
-    task.wait(0.25)
-
+    game:GetService("ReplicatedStorage").nya:FireServer(unpack(args))
 end
+
