@@ -27,6 +27,8 @@ local Window = WindUI:CreateWindow({
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
 
+local fpsn = 1
+
 -- UI elements
 fpstab = Window:Tab({
     Title = "FPS",
@@ -34,12 +36,54 @@ fpstab = Window:Tab({
     Locked = false,
 })
 
+local function send(res,mem,fps,gfx)
+    local args = {
+        [1] = {
+            ["res"] = res,
+            ["mem"] = mem,
+            ["t"] = "metrics",
+            ["gfx"] = Enum.SavedQualitySetting.Automatic,
+            ["fps"] = 59.84706857657344
+        }
+    }
+
+    game:GetService("ReplicatedStorage").nya:FireServer(unpack(args))
+end
+
+minfps = Window:Input({
+    Title = "Minimum Fps",
+    Desc = "The minimum fps to show",
+    Value = "10000",
+    InputIcon = "app-window",
+    Type = "Input",
+    Placeholder = "10000",
+    Callback = function(input)
+        numbervalue = tonumber(input)
+        if numbervalue == nil then
+            warn("Invalid Fps")
+            WindUI:Notify({
+                Title = "Invalid Fps",
+                Icon = "circle-x",
+                Duration = 5,
+                Content = "Invalid Number please try a valid number",
+            })
+        else 
+            fpsn = numbervalue
+        end
+    end
+})
+
 fpstab:Button({
     Title = "Fps bypasser",
     Desc = "bypasses your fps",
     Locked = false,
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Cooldudeisbetter/Scripts/refs/heads/main/code.lua"))()
+        send(
+            res = resn,
+            mem = memn,
+            fps = fpsn,
+            gfx = gfxr,
+        )
     end
 })
 
