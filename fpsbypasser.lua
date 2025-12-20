@@ -27,8 +27,42 @@ local Window = WindUI:Window({
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
 
+-- UI elements
 fpstab = Window:Tab({
     Title = "FPS",
     Icon = "laptop",
     Locked = false,
+})
+
+fpstab:Button({
+    Title = "Fps bypasser",
+    Desc = "bypasses your fps",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Cooldudeisbetter/Scripts/refs/heads/main/code.lua"))()
+    end
+})
+
+toolstab = Window:Tab({
+    Title = "Tools",
+    Icon = "wrench",
+    Locked = false,
+})
+
+toolstab:Button({
+    Title = "Simple spy",
+    Desc = "runs one of the only working rspys in this game",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpyBeta.lua"))()
+    end
+})
+
+toolstab:Button({
+    Title = "Solara Hub",
+    Desc = "This has everything",
+    Locked = false,
+    Callback = function()
+        loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()
+    end
 })
