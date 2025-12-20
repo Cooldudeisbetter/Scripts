@@ -15,7 +15,7 @@ WindUI:AddTheme({
     Icon = Color3.fromHex("#a1a1aa"),
 })
 
-local Window = WindUI:Window({
+local Window = WindUI:CreateWindow({
     Title = "Lunar Hub",
     Icon = "lucide:moon",
     Theme = "Lunar Theme",
