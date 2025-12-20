@@ -27,7 +27,8 @@ local Window = WindUI:CreateWindow({
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
 
-local fpsn = 1
+local fpsl = 1
+local fpsm = 10
 
 -- UI elements
 fpstab = Window:Tab({
@@ -58,8 +59,8 @@ minfps = fpstab:Input({
     Type = "Input",
     Placeholder = "10000",
     Callback = function(input)
-        numbervalue = tonumber(input)
-        if numbervalue == nil then
+        numbervaluelow = tonumber(input)
+        if numbervaluelpw == nil then
             warn("Invalid Fps")
             WindUI:Notify({
                 Title = "Invalid Fps",
@@ -68,7 +69,41 @@ minfps = fpstab:Input({
                 Content = "Invalid Number please try a valid number",
             })
         else 
-            fpsn = numbervalue
+            fpsl = numbervaluelow
+            WindUI:Notify({
+                Title = "Miminum fps value set",
+                Content = "The mimumum fps has been set as" ..fpsl,
+                Icon = "check",
+                Duration = 5,
+            })
+        end
+    end
+})
+
+maxfps = fpstab:Input({
+    Title = "Maximum Fps",
+    Desc = "The maximum amount of fps to use",
+    Value = "50000",
+    InputIcon = "app-window",
+    Type = "Input",
+    Placeholder = "50000"
+    Callback = function(input)
+        numbervaluemax = tonumber(input)
+        if numbervaluemax == nil then 
+            numbervaluemax = 10
+            WindUI:Notify({
+                Title = "Invalid Number",
+                Content = "The number", input, "is not a valid number",
+                Duration = 5,
+                Icon = "circle-x",
+            })
+        else
+            WindUI:Notify({
+                Title = "Number Set",
+                Content = "The maximum number of fps has been set to " ..tostring(numbervalue),
+                Duration = 5,
+                Icon = "check",
+            })
         end
     end
 })
