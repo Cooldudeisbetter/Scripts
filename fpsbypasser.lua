@@ -50,7 +50,7 @@ local function send(res,mem,fps,gfx)
     game:GetService("ReplicatedStorage").nya:FireServer(unpack(args))
 end
 
-minfps = Window:Input({
+minfps = fpstab:Input({
     Title = "Minimum Fps",
     Desc = "The minimum fps to show",
     Value = "10000",
