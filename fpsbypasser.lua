@@ -78,12 +78,7 @@ fpstab:Button({
     Desc = "bypasses your fps",
     Locked = false,
     Callback = function()
-        send(
-            res = resn,
-            mem = memn,
-            fps = fpsn,
-            gfx = gfxr,
-        )
+        print("..")
     end
 })
 
