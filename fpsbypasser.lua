@@ -86,7 +86,7 @@ maxfps = fpstab:Input({
     Value = "50000",
     InputIcon = "app-window",
     Type = "Input",
-    Placeholder = "50000"
+    Placeholder = "50000",
     Callback = function(input)
         numbervaluemax = tonumber(input)
         if numbervaluemax == nil then 
