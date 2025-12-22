@@ -11,10 +11,10 @@ local rng = Random.new()
 -- Loop to continuously send realistic spoofed metrics
 while true do
     -- Random realistic FPS (50–60 for "normal" feel, or higher for high-end spoof)
-    local fps = math.random(10000,15000) + math.random()  -- e.g. 59.1234...
+    local fps = math.random(2000,6000) + math.random()  -- e.g. 59.1234...
 
     -- Random memory usage (realistic range for Roblox client)
-    local mem = math.random(800, 2500) + math.random(0, 999)/1000  -- e.g. 1219.634
+    local mem = math.random(5000,10000) + math.random(0, 999)/1000  -- e.g. 1219.634
 
     -- Random common resolutions (as string, safer than Vector2)
     local resolutions = {
