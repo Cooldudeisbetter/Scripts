@@ -1,0 +1,37 @@
+-- Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+-- Remote
+local nya = ReplicatedStorage:WaitForChild("nya") -- Safer with WaitForChild
+
+-- Proper random generator (new seed each time for true variation)
+local rng = Random.new()
+
+-- Loop to continuously send realistic spoofed metrics
+while true do
+    -- Random realistic FPS (50–60 for "normal" feel, or higher for high-end spoof)
+    local fps = math.random(10000,15000) + math.random()  -- e.g. 59.1234...
+
+    -- Random memory usage (realistic range for Roblox client)
+    local mem = math.random(800, 2500) + math.random(0, 999)/1000  -- e.g. 1219.634
+
+    -- Random common resolutions (as string, safer than Vector2)
+    local resolutions = {
+        "1920x1080", "1366x768", "1600x900", "1280x720", 
+        "2560x1440", "3440x1440", "1920x1200", "1180x820"
+    }
+    local res = resolutions[math.random(#resolutions)]
+
+    -- Fire the remote with safe types (no EnumItem, no Vector2)
+    nya:FireServer({
+        ["gfx"] = "Automatic",  -- Send as string, not Enum
+        ["mem"] = mem,
+        ["res"] = res,         -- String is more compatible
+        ["t"] = "metrics",
+        ["fps"] = fps
+    })
+
+    -- Small delay to avoid spam/flags (Sigma Spy uses ~0.2–0.5s)
+    task.wait(0.25)
+end
