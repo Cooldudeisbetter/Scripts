@@ -29,6 +29,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main
 
 local fpsl = 1
 local fpsm = 10
+local mem = 10
+local res = "1100x800"
 
 -- UI elements
 fpstab = Window:Tab({
@@ -37,14 +39,14 @@ fpstab = Window:Tab({
     Locked = false,
 })
 
-local function send(res,mem,fps,gfx)
+local function send(res,mem,fps)
     local args = {
         [1] = {
             ["res"] = res,
             ["mem"] = mem,
             ["t"] = "metrics",
             ["gfx"] = Enum.SavedQualitySetting.Automatic,
-            ["fps"] = 59.84706857657344
+            ["fps"] = fps
         }
     }
 
@@ -60,7 +62,7 @@ minfps = fpstab:Input({
     Placeholder = "10000",
     Callback = function(input)
         numbervaluelow = tonumber(input)
-        if numbervaluelpw == nil then
+        if numbervaluelow == nil then
             warn("Invalid Fps")
             WindUI:Notify({
                 Title = "Invalid Fps",
@@ -98,6 +100,7 @@ maxfps = fpstab:Input({
                 Icon = "circle-x",
             })
         else
+            fpsm = numbervaluemax
             WindUI:Notify({
                 Title = "Number Set",
                 Content = "The maximum number of fps has been set to " ..tostring(numbervalue),
@@ -106,6 +109,34 @@ maxfps = fpstab:Input({
             })
         end
     end
+})
+
+resinp = fpstab:Input({
+    Title = "Resolution",
+    Desc = "Enter the device resolution",
+    Value = "1100x800",
+    InputIcon = "smartphone",
+    Type = "Input",
+    Placeholder = "1100x800",
+    Callback = function(input)
+        res = tostring(input)
+        WindUI:Notify({
+            Title = "Resolution set",
+            Duration = 5,
+            Content = "The resolution has been set",
+            Icon = "moon",
+        })
+    end
+})
+
+meminpmin = fpstab:Input({
+    Ttile = "Memory",
+    InputIcon = "cpu",
+    Value = "10000",
+    Placeholder = "10000",
+    Desc = "The mimimum amount of memory to show",
+    Type = "Input",
+
 })
 
 fpstab:Button({
