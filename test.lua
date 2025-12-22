@@ -7,10 +7,6 @@ local nya = ReplicatedStorage:WaitForChild("nya") -- Safer with WaitForChild
 
 -- Proper random generator (new seed each time for true variation)
 local rng = Random.new()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/refs/heads/main/Source.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
-
-
 
 -- Loop to continuously send realistic spoofed metrics
 while true do
