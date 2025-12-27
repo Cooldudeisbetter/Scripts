@@ -30,7 +30,17 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main
 local fpsl = 1
 local fpsm = 10
 local mem = 10
-local res = "1100x800"
+local res = "1920x1080"
+local supportedres = {
+    "1920x1080",
+    "2560x1440",
+    "3840x2160",
+    "3440x1440",
+    "5120x2880",
+    "1366x768",
+    "1660x900",
+}
+local bfps = false
 
 -- UI elements
 fpstab = Window:Tab({
@@ -84,7 +94,7 @@ minfps = fpstab:Input({
 
 maxfps = fpstab:Input({
     Title = "Maximum Fps",
-    Desc = "The maximum amount of fps to use",
+    Desc = "The maximum amount of fps to show",
     Value = "50000",
     InputIcon = "app-window",
     Type = "Input",
@@ -114,38 +124,94 @@ maxfps = fpstab:Input({
 resinp = fpstab:Input({
     Title = "Resolution",
     Desc = "Enter the device resolution",
-    Value = "1100x800",
+    Value = "1920x1080",
     InputIcon = "smartphone",
     Type = "Input",
-    Placeholder = "1100x800",
+    Placeholder = "1920x1080",
     Callback = function(input)
-        res = tostring(input)
-        WindUI:Notify({
-            Title = "Resolution set",
-            Duration = 5,
-            Content = "The resolution has been set",
-            Icon = "moon",
-        })
+        if table.find(tostring(input),supportedres) == nil then
+            WindUI:Notify({
+                Title = "Invalid Resolution",
+                Content = "Try using a valid resolution like 1920x1080",
+                Duration = 5,
+                Icon = "circle-x",
+            })
+        else 
+            WindUI:Notify({
+                Title = "Resolution Set",
+                Content = "the resolution has been succesfully set as " ..input,
+                Duration = 5,
+                Icon = "check"
+
+            })
     end
 })
 
 meminpmin = fpstab:Input({
     Ttile = "Memory",
     InputIcon = "cpu",
-    Value = "10000",
-    Placeholder = "10000",
+    Value = "3000",
+    Placeholder = "3000",
     Desc = "The mimimum amount of memory to show",
     Type = "Input",
+    Callback = function(input)
+        if tonumber(input) == nil then
+            WindUI:Notify({
+                Title = "Invalid Number",
+                Icon  = "circle-x",
+                Content = "The number provided is invalid",
+                Duration = 5
+            })
+        else
+            mem = tonumber(input)
+            WindUI:Notify({
+                Title = "Value set",
+                Content = "The minimum memory has been set",
+                Duration = 5,
+                Icon = "check",
+            })
+        end 
+    end
 
 })
 
-fpstab:Button({
-    Title = "Fps bypasser",
-    Desc = "bypasses your fps",
-    Locked = false,
-    Callback = function()
-        print("..")
+memmaxinp = fpstab:Input({
+    Title = "Max memory",
+    Desc = "The maximum amount of memory to show",
+    InputIcon = "cpu",
+    Placeholder = "5000",
+    Value = "5000",
+    Type = "Input",
+    Callback = function(input)
+        convinput = tonumber(input)
+        if convinput == nil then
+            WindUI:Notify({
+                Title = "Invalid Number",
+                Content = "The given argument", convinput ,"is not a number",
+                Duration = 5,
+                Icon = "circle-x"
+            })
+        else
+            WindUI:Notify({
+                Title = "Number set",
+                Content = "The maximum number of memory has been set",
+                Icon = "check",
+                Duration = 5,
+            })
+        end
     end
+})
+
+fpstab:Toggle({
+    Title = "Bypass Stats",
+    Icon = "chart-spline",
+    Desc = "Toggles the stat bypasses",
+    Type = "checkbox",
+    Value = false,
+    Callback = function(state)
+        bfps = state
+    end
+
 })
 
 toolstab = Window:Tab({
