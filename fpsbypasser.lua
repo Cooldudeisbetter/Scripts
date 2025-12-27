@@ -38,7 +38,7 @@ local supportedres = {
     "3440x1440",
     "5120x2880",
     "1366x768",
-    "1660x900",
+    "1600x900",
 }
 local bfps = false
 
@@ -129,7 +129,7 @@ resinp = fpstab:Input({
     Type = "Input",
     Placeholder = "1920x1080",
     Callback = function(input)
-        if table.find(tostring(input),supportedres) == nil then
+        if not table.find(supportedres, input) then
             WindUI:Notify({
                 Title = "Invalid Resolution",
                 Content = "Try using a valid resolution like 1920x1080",
@@ -137,6 +137,7 @@ resinp = fpstab:Input({
                 Icon = "circle-x",
             })
         else 
+            res = input
             WindUI:Notify({
                 Title = "Resolution Set",
                 Content = "the resolution has been succesfully set as " ..input,
@@ -149,7 +150,7 @@ resinp = fpstab:Input({
 })
 
 meminpmin = fpstab:Input({
-    Ttile = "Memory",
+    Title = "Memory",
     InputIcon = "cpu",
     Value = "3000",
     Placeholder = "3000",
