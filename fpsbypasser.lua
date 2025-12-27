@@ -208,7 +208,7 @@ fpstab:Toggle({
     Title = "Bypass Stats",
     Icon = "chart-spline",
     Desc = "Toggles the stat bypasses",
-    Type = "checkbox",
+    Type = "Checkbox",
     Value = false,
     Callback = function(state)
         bfps = state
