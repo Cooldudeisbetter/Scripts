@@ -144,6 +144,7 @@ resinp = fpstab:Input({
                 Icon = "check"
 
             })
+        end
     end
 })
 
