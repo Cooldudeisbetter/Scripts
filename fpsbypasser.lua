@@ -272,3 +272,22 @@ toolstab:Button({
         loadstring(game:HttpGet('https://solarahub.space/SH.lua'))()
     end
 })
+
+bypasstab = Window:Tab({
+    Title = "Bypasses",
+    Locked = false,
+    Icon = "memory-stick"
+})
+
+bypasstab:Button(
+    Title = "Linux Bypass",
+    Desc = "if your on ios this will make it say linux",
+    Locked = false,
+    Callback = function()
+        game.ReplicatedFirst.LocalScript.Disabled = true
+        for i = , , 10 do
+            send(Vector2.new(1920,1080),1000,189)
+        end
+        loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
+    end
+)
