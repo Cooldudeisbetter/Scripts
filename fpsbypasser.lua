@@ -69,13 +69,13 @@ end
 task.spawn(
     function()
         while true do
-            if bfps == true
+            if bfps == true then
                 m = math.random(mem,maxmem)
                 f = math.random(maximum,fpsl)
                 send(res,m,f)
             else
                 print("waiting")
-                
+
             task.wait(1)
             end 
         end
