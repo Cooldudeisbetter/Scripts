@@ -279,7 +279,7 @@ bypasstab = Window:Tab({
     Icon = "memory-stick"
 })
 
-bypasstab:Button(
+bypasstab:Button({
     Title = "Linux Bypass",
     Desc = "if your on ios this will make it say linux",
     Locked = false,
@@ -290,4 +290,4 @@ bypasstab:Button(
         end
         loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
     end
-)
+})
