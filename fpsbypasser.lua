@@ -79,7 +79,7 @@ task.spawn(function()
 
             local resparts = string.split(res,"x")
             local res1 = tonumber(resparts[1])
-            local res2 = tonumber(respaets[2])
+            local res2 = tonumber(resparts[2])
             local resv = Vector2.new(res1,res2)
             
             pcall(send, resv, m, f)  
