@@ -66,21 +66,24 @@ end
 
 --send loop
 
-task.spawn(
-    function()
-        while true do
-            if bfps == true then
-                m = math.random(math.floor(mem),math.floor(maxmem))
-                f = math.random(math.floor(fpsl),math.floor(fpsm))
-                send(res,m,f)
-            else
-                print("waiting")
-
-            task.wait(1)
-            end 
+task.spawn(function()
+    while true do
+        if bfps then 
+            local minMem = math.floor(mem)
+            local maxMem = math.floor(maxmem)
+            m = math.random(math.min(minMem, maxMem), math.max(minMem, maxMem))
+            
+            local minFps = math.floor(fpsl)
+            local maxFps = math.floor(fpsm)
+            f = math.random(math.min(minFps, maxFps), math.max(minFps, maxFps))
+            
+            pcall(send, res, m, f)  
+        else
+            print("waiting")
         end
+        task.wait(1)
     end
-)
+end)
 
 minfps = fpstab:Input({
     Title = "Minimum Fps",
