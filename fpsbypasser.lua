@@ -140,7 +140,7 @@ maxfps = fpstab:Input({
     end
 })
 
-fpstab:Dividor()
+fpstab:Divider()
 
 resinp = fpstab:Input({
     Title = "Resolution",
