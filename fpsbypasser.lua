@@ -70,8 +70,8 @@ task.spawn(
     function()
         while true do
             if bfps == true then
-                m = math.random(mem,maxmem)
-                f = math.random(maximum,fpsl)
+                m = math.random(math.floor(mem),math.floor(maxmem))
+                f = math.random(math.floor(maxfps),math.floor(fpsl))
                 send(res,m,f)
             else
                 print("waiting")
