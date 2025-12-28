@@ -41,7 +41,7 @@ local supportedres = {
     "1600x900",
 }
 local bfps = false
-
+maxmem = 100
 -- UI elements
 fpstab = Window:Tab({
     Title = "FPS",
@@ -49,6 +49,7 @@ fpstab = Window:Tab({
     Locked = false,
 })
 
+-- send func
 local function send(res,mem,fps)
     local args = {
         [1] = {
@@ -62,6 +63,24 @@ local function send(res,mem,fps)
 
     game:GetService("ReplicatedStorage").nya:FireServer(unpack(args))
 end
+
+--send loop
+
+task.spawn(
+    function()
+        while true do
+            if bfps == true
+                m = math.random(mem,maxmem)
+                f = math.random(maximum,fpsl)
+                send(res,m,f)
+            else
+                print("waiting")
+                
+            task.wait(1)
+            end 
+        end
+    end
+)
 
 minfps = fpstab:Input({
     Title = "Minimum Fps",
@@ -121,6 +140,8 @@ maxfps = fpstab:Input({
     end
 })
 
+fpstab:Dividor()
+
 resinp = fpstab:Input({
     Title = "Resolution",
     Desc = "Enter the device resolution",
@@ -148,7 +169,7 @@ resinp = fpstab:Input({
         end
     end
 })
-
+fpstab:Divider()
 meminpmin = fpstab:Input({
     Title = "Memory",
     InputIcon = "cpu",
@@ -194,6 +215,7 @@ memmaxinp = fpstab:Input({
                 Icon = "circle-x"
             })
         else
+            maxmem = convinput
             WindUI:Notify({
                 Title = "Number set",
                 Content = "The maximum number of memory has been set",
@@ -203,6 +225,8 @@ memmaxinp = fpstab:Input({
         end
     end
 })
+
+fpstab:Divider()
 
 fpstab:Toggle({
     Title = "Bypass Stats",
