@@ -78,6 +78,7 @@ task.spawn(function()
             f = math.random(math.min(minFps, maxFps), math.max(minFps, maxFps))
             
             pcall(send, res, m, f)  
+            print(res)
         else
             print("waiting")
         end
