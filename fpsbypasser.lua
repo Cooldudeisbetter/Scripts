@@ -2,6 +2,7 @@
 -- Pretty useless if you dont join https://www.roblox.com/share?code=ed31689ca63b3d46828fa052cec34caa&type=ExperienceDetails&stamp=1766173880323
 
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 WindUI:AddTheme({
     Name = "Lunar Theme",
@@ -284,10 +285,11 @@ bypasstab:Button({
     Desc = "if your on ios this will make it say linux",
     Locked = false,
     Callback = function()
-        game.ReplicatedFirst.LocalScript.Disabled = true
-        for i = , , 10 do
-            send(Vector2.new(1920,1080),1000,189)
+        if ReplicatedFirst:WaitForChild("LocalScript",10) then
+            ReplicatedFirst:FindFirstChild("LocalScript").Disabled = true
         end
+    
+        send(Vector2.new(1920,1080),1000,189)
         loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
     end
 })
